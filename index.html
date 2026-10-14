@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Centro de Graduados — FACEI · UCALP</title>
+    <meta name="description" content="Centro de Graduados de la Facultad de Ciencias Exactas e Ingeniería de la Universidad Católica de La Plata.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ucalp: {
+                            navy: '#0C2340',
+                            blue: '#1B4F72',
+                            sky: '#2E86C1',
+                            light: '#D6EAF8',
+                            gold: '#D4A017',
+                            cream: '#F8F9FA',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"DM Serif Display"', 'Georgia', 'serif'],
+                        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: 'DM Sans', system-ui, sans-serif; }
+        .carousel-track { display: flex; transition: transform 0.5s ease; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-ucalp-navy/95 backdrop-blur-sm z-50 border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#inicio" class="text-white font-display text-xl">FACEI<span class="text-ucalp-gold">·</span>Graduados</a>
+
+            <!-- Desktop menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#sobre" class="text-white/70 hover:text-white text-sm font-medium transition-colors">Sobre el Centro</a>
+                <a href="#carreras" class="text-white/70 hover:text-white text-sm font-medium transition-colors">Carreras</a>
+                <a href="#graduados" class="text-white/70 hover:text-white text-sm font-medium transition-colors">Graduados</a>
+                <a href="#historias" class="text-white/70 hover:text-white text-sm font-medium transition-colors">Historias</a>
+                <a href="#desarrollo" class="text-white/70 hover:text-white text-sm font-medium transition-colors">Desarrollo</a>
+                <a href="#contacto" class="bg-ucalp-gold text-ucalp-navy px-4 py-2 rounded text-sm font-semibold hover:bg-yellow-500 transition-colors">Contacto</a>
+            </div>
+
+            <!-- Mobile hamburger -->
+            <button id="menu-btn" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ucalp-navy border-t border-white/10 px-6 py-4 space-y-3">
+            <a href="#sobre" class="block text-white/70 hover:text-white text-sm">Sobre el Centro</a>
+            <a href="#carreras" class="block text-white/70 hover:text-white text-sm">Carreras</a>
+            <a href="#graduados" class="block text-white/70 hover:text-white text-sm">Graduados</a>
+            <a href="#historias" class="block text-white/70 hover:text-white text-sm">Historias</a>
+            <a href="#desarrollo" class="block text-white/70 hover:text-white text-sm">Desarrollo</a>
+            <a href="#contacto" class="block text-ucalp-gold font-semibold text-sm">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="inicio" class="relative bg-ucalp-navy min-h-[85vh] flex items-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-ucalp-navy via-ucalp-blue to-ucalp-navy opacity-90"></div>
+        <div class="absolute top-20 right-0 w-96 h-96 bg-ucalp-sky/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 left-10 w-64 h-64 bg-ucalp-gold/5 rounded-full blur-3xl"></div>
+
+        <div class="relative max-w-6xl mx-auto px-6 py-32">
+            <p class="text-ucalp-gold font-medium text-sm tracking-wide mb-4">Facultad de Ciencias Exactas e Ingeniería · UCALP</p>
+            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-white leading-tight max-w-4xl mb-6">
+                Centro de Graduados
+            </h1>
+            <p class="text-white/70 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+                Conectamos a nuestra comunidad de egresados con oportunidades de desarrollo profesional,
+                intercambio de experiencias y vínculo activo con la facultad.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#graduados" class="bg-ucalp-gold text-ucalp-navy px-8 py-3 rounded font-semibold text-center hover:bg-yellow-500 transition-colors">
+                    Conocé a nuestros graduados
+                </a>
+                <a href="#contacto" class="border border-white/30 text-white px-8 py-3 rounded font-medium text-center hover:bg-white/10 transition-colors">
+                    Sumate a la comunidad
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE EL CENTRO -->
+    <section id="sobre" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-3xl">
+                <p class="text-ucalp-sky font-medium text-sm mb-3">Sobre el Centro</p>
+                <h2 class="font-display text-3xl md:text-4xl text-ucalp-navy mb-6">Un espacio para quienes construyen su camino profesional</h2>
+                <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                    El Centro de Graduados de la FACEI nace para fortalecer el vínculo entre la Facultad de Ciencias Exactas
+                    e Ingeniería y su comunidad de egresados. Representamos a todas las carreras de la unidad académica,
+                    desde Sistemas e Ingeniería hasta Higiene y Seguridad y la Ingeniería Ambiental.
+                </p>
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    Nuestro objetivo es consolidar una comunidad integrada y participativa, facilitar gestiones
+                    administrativas, generar espacios de intercambio y actualización profesional, y contribuir al
+                    crecimiento de las nuevas generaciones a través de la experiencia de quienes ya recorrieron el camino.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mt-16">
+                <div class="p-6 bg-ucalp-cream rounded-lg">
+                    <p class="text-3xl font-display text-ucalp-navy mb-2">35+</p>
+                    <p class="text-gray-600">Graduados encuestados de múltiples carreras y promociones</p>
+                </div>
+                <div class="p-6 bg-ucalp-cream rounded-lg">
+                    <p class="text-3xl font-display text-ucalp-navy mb-2">6</p>
+                    <p class="text-gray-600">Carreras representadas en la Facultad de Ciencias Exactas e Ingeniería</p>
+                </div>
+                <div class="p-6 bg-ucalp-cream rounded-lg">
+                    <p class="text-3xl font-display text-ucalp-navy mb-2">5 países</p>
+                    <p class="text-gray-600">Argentina, España, Canadá, Australia y más destinos donde trabajan nuestros egresados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARRERAS -->
+    <section id="carreras" class="py-24 bg-ucalp-cream">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="text-ucalp-sky font-medium text-sm mb-3">Nuestras carreras</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ucalp-navy mb-12 max-w-2xl">Las disciplinas que forman a los profesionales de la FACEI</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center mb-4">
+                        <span class="text-ucalp-sky text-lg">💻</span>
+                    </div>
+                    <h3 class="font-semibold text-ucalp-navy text-lg mb-2">Licenciatura en Sistemas</h3>
+                    <p class="text-gray-500 text-sm">Formación en desarrollo de software, gestión de proyectos, arquitectura de sistemas y tecnologías de la información.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center mb-4">
+                        <span class="text-ucalp-sky text-lg">⚙️</span>
+                    </div>
+                    <h3 class="font-semibold text-ucalp-navy text-lg mb-2">Ingeniería en Sistemas de Información</h3>
+                    <p class="text-gray-500 text-sm">Ingeniería aplicada al diseño, implementación y gestión de sistemas de información complejos.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center mb-4">
+                        <span class="text-ucalp-sky text-lg">🌿</span>
+                    </div>
+                    <h3 class="font-semibold text-ucalp-navy text-lg mb-2">Ingeniería Ambiental</h3>
+                    <p class="text-gray-500 text-sm">Carrera única en la región. Formación en gestión ambiental, recursos naturales, y desarrollo sostenible.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center mb-4">
+                        <span class="text-ucalp-sky text-lg">🔧</span>
+                    </div>
+                    <h3 class="font-semibold text-ucalp-navy text-lg mb-2">Tecnicatura en Sistemas de Información</h3>
+                    <p class="text-gray-500 text-sm">Formación técnica orientada a la inserción laboral rápida en el área de sistemas y tecnología.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center mb-4">
+                        <span class="text-ucalp-sky text-lg">🛡️</span>
+                    </div>
+                    <h3 class="font-semibold text-ucalp-navy text-lg mb-2">Lic. en Higiene y Seguridad en el Trabajo</h3>
+                    <p class="text-gray-500 text-sm">Profesionales que velan por la seguridad y salud ocupacional en organizaciones públicas y privadas.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center mb-4">
+                        <span class="text-ucalp-sky text-lg">⚡</span>
+                    </div>
+                    <h3 class="font-semibold text-ucalp-navy text-lg mb-2">Ingeniería Electricista</h3>
+                    <p class="text-gray-500 text-sm">Formación en sistemas eléctricos, instalaciones industriales y proyectos de ingeniería eléctrica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRADUADOS DESTACADOS -->
+    <section id="graduados" class="py-24 bg-ucalp-navy">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="text-ucalp-gold font-medium text-sm mb-3">Graduados destacados</p>
+            <h2 class="font-display text-3xl md:text-4xl text-white mb-4 max-w-2xl">Egresados de la FACEI en el mundo</h2>
+            <p class="text-white/60 mb-12 max-w-xl">Nuestros graduados se desarrollan profesionalmente en Argentina y en el exterior, en roles que van desde el desarrollo de software hasta la gestión ambiental.</p>
+
+            <div class="relative overflow-hidden">
+                <div id="carousel" class="carousel-track gap-6">
+                    <!-- Card 1 -->
+                    <div class="min-w-[300px] md:min-w-[350px] bg-white/10 backdrop-blur rounded-lg p-6 border border-white/10 flex-shrink-0">
+                        <div class="w-14 h-14 bg-ucalp-sky/20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-white font-display text-xl">FM</span>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg">Federico Maza</h3>
+                        <p class="text-ucalp-gold text-sm font-medium mb-1">Desarrollador Senior — Barcelona, España</p>
+                        <p class="text-white/50 text-sm mb-4">Lic. en Sistemas</p>
+                        <p class="text-white/70 text-sm leading-relaxed">Comenzó en Holanda en e-commerce y hoy se desempeña en el sector tecnológico en Barcelona. Destaca la formación en pensamiento crítico y trabajo en equipo de la UCALP.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="min-w-[300px] md:min-w-[350px] bg-white/10 backdrop-blur rounded-lg p-6 border border-white/10 flex-shrink-0">
+                        <div class="w-14 h-14 bg-ucalp-sky/20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-white font-display text-xl">DA</span>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg">Darío Alba</h3>
+                        <p class="text-ucalp-gold text-sm font-medium mb-1">Admin. de Operaciones — Manitoba, Canadá</p>
+                        <p class="text-white/50 text-sm mb-4">Ing. Ambiental · 2022</p>
+                        <p class="text-white/70 text-sm leading-relaxed">Trabaja en una ONG del río Souris dedicada a la preservación de cuencas hidrográficas. Usa drones y sistemas GIS diariamente.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="min-w-[300px] md:min-w-[350px] bg-white/10 backdrop-blur rounded-lg p-6 border border-white/10 flex-shrink-0">
+                        <div class="w-14 h-14 bg-ucalp-sky/20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-white font-display text-xl">LS</span>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg">Egresado Lic. en Sistemas</h3>
+                        <p class="text-ucalp-gold text-sm font-medium mb-1">Líder de Desarrollo y QA — Exterior</p>
+                        <p class="text-white/50 text-sm mb-4">Lic. en Análisis de Sistemas · 2015</p>
+                        <p class="text-white/70 text-sm leading-relaxed">Lidera equipos de desarrollo y QA en entornos Agile. Creció desde desarrollador hasta liderazgo en empresas extranjeras.</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="min-w-[300px] md:min-w-[350px] bg-white/10 backdrop-blur rounded-lg p-6 border border-white/10 flex-shrink-0">
+                        <div class="w-14 h-14 bg-ucalp-sky/20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-white font-display text-xl">HS</span>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg">Egresado Lic. en Seg. e Higiene</h3>
+                        <p class="text-ucalp-gold text-sm font-medium mb-1">Profesional de HyS — Sydney, Australia</p>
+                        <p class="text-white/50 text-sm mb-4">Lic. en Seg. e Higiene · 2019</p>
+                        <p class="text-white/70 text-sm leading-relaxed">Aplica sus conocimientos de ergonomía e higiene en el sector privado australiano. Valora la base sólida recibida en la FACEI.</p>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="min-w-[300px] md:min-w-[350px] bg-white/10 backdrop-blur rounded-lg p-6 border border-white/10 flex-shrink-0">
+                        <div class="w-14 h-14 bg-ucalp-sky/20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-white font-display text-xl">IS</span>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg">Egresado Ing. en Sistemas</h3>
+                        <p class="text-ucalp-gold text-sm font-medium mb-1">Profesional IT — Madrid, España</p>
+                        <p class="text-white/50 text-sm mb-4">Ing. en Sistemas · 2020</p>
+                        <p class="text-white/70 text-sm leading-relaxed">Trabaja en el sector privado tecnológico en Madrid. Muy satisfecho con su desarrollo profesional post-graduación.</p>
+                    </div>
+                </div>
+
+                <!-- Carousel controls -->
+                <div class="flex gap-3 mt-8">
+                    <button id="prev-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button id="next-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HISTORIAS / TESTIMONIOS -->
+    <section id="historias" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="text-ucalp-sky font-medium text-sm mb-3">Historias de egresados</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ucalp-navy mb-12 max-w-2xl">La experiencia de quienes ya recorrieron el camino</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-ucalp-cream rounded-lg p-8">
+                    <svg class="w-8 h-8 text-ucalp-sky/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <p class="text-gray-700 leading-relaxed mb-6">Mi paso por la universidad está lleno de recuerdos valiosos. Más allá de lo académico, la fuerte comunidad universitaria, la guía de mis docentes y las amistades que forjé crearon una experiencia transformadora.</p>
+                    <div>
+                        <p class="font-semibold text-ucalp-navy">Federico Maza</p>
+                        <p class="text-gray-500 text-sm">Lic. en Sistemas · Barcelona, España</p>
+                    </div>
+                </div>
+
+                <div class="bg-ucalp-cream rounded-lg p-8">
+                    <svg class="w-8 h-8 text-ucalp-sky/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <p class="text-gray-700 leading-relaxed mb-6">Ha sido la llave para desarrollarme profesionalmente. Pude asumir nuevos roles en la empresa enfrentando nuevos desafíos y generando un espacio de aprendizaje y trabajo en equipo permanente.</p>
+                    <div>
+                        <p class="font-semibold text-ucalp-navy">Egresado de Ing. Ambiental</p>
+                        <p class="text-gray-500 text-sm">Ing. Ambiental · 2020 · La Plata</p>
+                    </div>
+                </div>
+
+                <div class="bg-ucalp-cream rounded-lg p-8">
+                    <svg class="w-8 h-8 text-ucalp-sky/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <p class="text-gray-700 leading-relaxed mb-6">La facultad termina de modelar el carácter, la constancia, la forma de pensar. Hoy sin haber estudiado en la universidad, no hubiese tenido las herramientas para desarrollarme profesionalmente.</p>
+                    <div>
+                        <p class="font-semibold text-ucalp-navy">Egresado de Lic. en Sistemas</p>
+                        <p class="text-gray-500 text-sm">Lic. en Análisis de Sistemas · 2015</p>
+                    </div>
+                </div>
+
+                <div class="bg-ucalp-cream rounded-lg p-8">
+                    <svg class="w-8 h-8 text-ucalp-sky/30 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <p class="text-gray-700 leading-relaxed mb-6">Para llevar adelante mi trabajo, todos los días uso conocimientos que aprendí en la facultad. Puedo estar publicando algo en redes a la mañana y pasar a hacer un mapeo con sistemas LiDAR a la tarde.</p>
+                    <div>
+                        <p class="font-semibold text-ucalp-navy">Darío Alba</p>
+                        <p class="text-gray-500 text-sm">Ing. Ambiental · 2022 · Manitoba, Canadá</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Link a notas completas -->
+            <div class="mt-12 pt-8 border-t border-gray-100">
+                <h3 class="font-semibold text-ucalp-navy mb-4">Notas completas en UCALP</h3>
+                <div class="space-y-3">
+                    <a href="https://www.ucalp.edu.ar/joven-graduado-en-la-ucalp-triunfa-en-europa-con-su-aporte-en-tecnologia/" target="_blank" class="block text-ucalp-sky hover:text-ucalp-blue transition-colors text-sm">
+                        Un graduado de la UCALP llevó su formación más allá de las fronteras — Federico Maza en Europa →
+                    </a>
+                    <a href="https://www.ucalp.edu.ar/importante-labor-de-ingeniero-ambiental-en-canada/" target="_blank" class="block text-ucalp-sky hover:text-ucalp-blue transition-colors text-sm">
+                        Importante labor de ingeniero ambiental en Canadá — Darío Alba en Manitoba →
+                    </a>
+                    <a href="https://www.ucalp.edu.ar/31660-2/" target="_blank" class="block text-ucalp-sky hover:text-ucalp-blue transition-colors text-sm">
+                        Nuevos profesionales de Ingeniería Ambiental — Los primeros 5 ingenieros ambientales de la FACEI →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESARROLLO PROFESIONAL -->
+    <section id="desarrollo" class="py-24 bg-ucalp-cream">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="text-ucalp-sky font-medium text-sm mb-3">Desarrollo profesional</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ucalp-navy mb-6 max-w-2xl">Herramientas para tu crecimiento</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mb-12">La UCALP acompaña a sus alumnos y graduados en el proceso de inserción laboral y desarrollo profesional continuo.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg p-8 border border-gray-100">
+                    <h3 class="font-semibold text-ucalp-navy text-lg mb-3">Portal de Empleos y Pasantías</h3>
+                    <p class="text-gray-600 mb-4">Accedé a oportunidades laborales y pasantías en organizaciones públicas y privadas a través del portal de la universidad.</p>
+                    <a href="https://jobboard.universia.net/empleosucalp" target="_blank" class="text-ucalp-sky font-medium text-sm hover:text-ucalp-blue transition-colors">
+                        Acceder al portal →
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg p-8 border border-gray-100">
+                    <h3 class="font-semibold text-ucalp-navy text-lg mb-3">Capacitación y actualización</h3>
+                    <p class="text-gray-600 mb-4">Cursos, talleres y diplomaturas ofrecidos por la facultad para mantenerte actualizado en las áreas más demandadas: IA, seguridad, gestión, herramientas digitales.</p>
+                    <a href="https://www.ucalp.edu.ar/actual/diplocursos/" target="_blank" class="text-ucalp-sky font-medium text-sm hover:text-ucalp-blue transition-colors">
+                        Ver cursos disponibles →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIVIDADES Y COMUNIDAD -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="md:flex md:items-start md:gap-16">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <p class="text-ucalp-sky font-medium text-sm mb-3">Actividades y comunidad</p>
+                    <h2 class="font-display text-3xl md:text-4xl text-ucalp-navy mb-6">Espacios de encuentro e intercambio</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        El Centro organiza periódicamente conferencias, encuentros disciplinarios, conversatorios y
+                        espacios de intercambio profesional. Mantenemos el vínculo activo entre la facultad y sus
+                        egresados, contribuyendo al crecimiento de las nuevas generaciones.
+                    </p>
+                </div>
+                <div class="md:w-1/2 space-y-4">
+                    <div class="flex items-start gap-4 p-4 bg-ucalp-cream rounded-lg">
+                        <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span class="text-ucalp-sky">🎓</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-ucalp-navy">Conferencias y conversatorios</h4>
+                            <p class="text-gray-500 text-sm">Encuentros con profesionales y expertos en temas de actualidad.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-ucalp-cream rounded-lg">
+                        <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span class="text-ucalp-sky">🤝</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-ucalp-navy">Networking profesional</h4>
+                            <p class="text-gray-500 text-sm">Espacios para conectar con otros egresados y ampliar tu red de contactos.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-ucalp-cream rounded-lg">
+                        <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span class="text-ucalp-sky">📣</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-ucalp-navy">Novedades y difusión</h4>
+                            <p class="text-gray-500 text-sm">Seguinos en redes sociales para enterarte de las últimas novedades del Centro.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-24 bg-ucalp-navy">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="md:flex md:gap-16">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <p class="text-ucalp-gold font-medium text-sm mb-3">Contacto</p>
+                    <h2 class="font-display text-3xl md:text-4xl text-white mb-6">Sumate a la comunidad de graduados</h2>
+                    <p class="text-white/70 text-lg leading-relaxed mb-8">
+                        Si sos egresado de la FACEI, actualizá tus datos para que podamos mantenerte informado sobre
+                        oportunidades, eventos y novedades del Centro de Graduados.
+                    </p>
+                    <a href="#" class="inline-block bg-ucalp-gold text-ucalp-navy px-8 py-3 rounded font-semibold hover:bg-yellow-500 transition-colors">
+                        Completar formulario de vinculación
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white/10 rounded-lg p-8 border border-white/10">
+                        <h3 class="text-white font-semibold mb-6">Datos de contacto</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-white/50 text-sm">Facultad</p>
+                                <p class="text-white">Facultad de Ciencias Exactas e Ingeniería — UCALP</p>
+                            </div>
+                            <div>
+                                <p class="text-white/50 text-sm">Dirección</p>
+                                <p class="text-white">Diagonal 73 Nº 2137, La Plata, Buenos Aires</p>
+                            </div>
+                            <div>
+                                <p class="text-white/50 text-sm">Email</p>
+                                <p class="text-white">facei@ucalp.edu.ar</p>
+                            </div>
+                            <div>
+                                <p class="text-white/50 text-sm">Teléfono</p>
+                                <p class="text-white">221 4393204</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-ucalp-navy border-t border-white/10 py-8">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-center md:text-left">
+                <p class="text-white/40 text-sm">Centro de Graduados — Facultad de Ciencias Exactas e Ingeniería</p>
+                <p class="text-white/30 text-xs mt-1">Universidad Católica de La Plata · 2026</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="https://www.facebook.com/exactas.ingenieria.ucalp" target="_blank" class="text-white/40 hover:text-white text-sm transition-colors">Facebook</a>
+                <a href="https://www.instagram.com/exactas.ingenieria.ucalp" target="_blank" class="text-white/40 hover:text-white text-sm transition-colors">Instagram</a>
+                <a href="https://www.linkedin.com/school/ucalp/" target="_blank" class="text-white/40 hover:text-white text-sm transition-colors">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>
