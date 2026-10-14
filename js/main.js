@@ -24,63 +24,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // -----------------------------------------
     // Carousel de graduados destacados
+    // Scroll continuo con requestAnimationFrame
     // -----------------------------------------
     const carousel = document.getElementById('carousel');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
-    let scrollPos = 0;
     const cardWidth = 370;
 
-    function advanceCarousel() {
-        const maxScroll = carousel.scrollWidth - carousel.parentElement.clientWidth;
-        if (scrollPos >= maxScroll) {
-            // Volver al inicio
-            scrollPos = 0;
-        } else {
-            scrollPos = Math.min(scrollPos + cardWidth, maxScroll);
+    // Duplicar las cards para loop infinito
+    carousel.innerHTML += carousel.innerHTML;
+
+    let scrollPos = 0;
+    let paused = false;
+    const speed = 0.5; // px por frame (~30px/seg a 60fps)
+    const halfWidth = carousel.scrollWidth / 2;
+
+    function animate() {
+        if (!paused) {
+            scrollPos += speed;
+            // Cuando recorrió la mitad (las cards originales), resetear
+            if (scrollPos >= halfWidth) {
+                scrollPos = 0;
+            }
+            carousel.style.transform = `translateX(-${scrollPos}px)`;
         }
-        carousel.style.transform = `translateX(-${scrollPos}px)`;
+        requestAnimationFrame(animate);
     }
 
-    function retreatCarousel() {
-        scrollPos = Math.max(scrollPos - cardWidth, 0);
-        carousel.style.transform = `translateX(-${scrollPos}px)`;
-    }
+    requestAnimationFrame(animate);
 
+    // Botones: salto manual de una card
     nextBtn.addEventListener('click', () => {
-        advanceCarousel();
-        resetAutoplay();
+        scrollPos = Math.min(scrollPos + cardWidth, halfWidth - 1);
     });
 
     prevBtn.addEventListener('click', () => {
-        retreatCarousel();
-        resetAutoplay();
+        scrollPos = Math.max(scrollPos - cardWidth, 0);
     });
 
-    // Autoplay: avanza cada 5 segundos, pausa con interacción
-    let autoplayInterval = setInterval(advanceCarousel, 5000);
-
-    function resetAutoplay() {
-        clearInterval(autoplayInterval);
-        autoplayInterval = setInterval(advanceCarousel, 5000);
-    }
-
-    // Pausar en hover sobre el carousel
+    // Pausar en hover (desktop)
     carousel.parentElement.addEventListener('mouseenter', () => {
-        clearInterval(autoplayInterval);
+        paused = true;
     });
 
     carousel.parentElement.addEventListener('mouseleave', () => {
-        autoplayInterval = setInterval(advanceCarousel, 5000);
+        paused = false;
     });
 
     // Pausar en touch (mobile)
     carousel.parentElement.addEventListener('touchstart', () => {
-        clearInterval(autoplayInterval);
+        paused = true;
     }, { passive: true });
 
     carousel.parentElement.addEventListener('touchend', () => {
-        autoplayInterval = setInterval(advanceCarousel, 5000);
+        paused = false;
     }, { passive: true });
 
     // -----------------------------------------
