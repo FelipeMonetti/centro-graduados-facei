@@ -23,6 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -----------------------------------------
+    // Carousel auto-scroll infinito
+    // -----------------------------------------
+    const carouselTrack = document.querySelector('.carousel-track');
+    if (carouselTrack) {
+        const cards = carouselTrack.innerHTML;
+        carouselTrack.innerHTML = cards + cards;
+    }
+
+    // -----------------------------------------
     // Fade in on scroll (IntersectionObserver)
     // -----------------------------------------
     const observer = new IntersectionObserver((entries) => {
