@@ -6,7 +6,7 @@
     <title>Centro de Graduados — FACEI · UCALP</title>
     <meta name="description" content="Centro de Graduados de la Facultad de Ciencias Exactas e Ingeniería de la Universidad Católica de La Plata.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -22,7 +22,7 @@
                         }
                     },
                     fontFamily: {
-                        display: ['"DM Serif Display"', 'Georgia', 'serif'],
+                        display: ['"Montserrat"', 'system-ui', 'sans-serif'],
                         body: ['"DM Sans"', 'system-ui', 'sans-serif'],
                     }
                 }
@@ -32,7 +32,9 @@
     <style>
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body { font-family: 'DM Sans', system-ui, sans-serif; }
-        .carousel-track { display: flex; }
+        .carousel-container { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .carousel-container::-webkit-scrollbar { display: none; }
+        .carousel-card { scroll-snap-align: start; }
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
@@ -40,7 +42,7 @@
 <body class="bg-white text-gray-800">
 
     <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full bg-ucalp-navy/95 backdrop-blur-sm z-50 border-b border-white/10">
+    <nav class="fixed top-0 w-full bg-ucalp-navy z-50 border-b border-white/10" style="will-change: transform;">
         <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#inicio" class="flex items-center gap-3">
                 <img src="img/logo-graduados-ucalp.jpg" alt="Graduados UCALP" class="h-10 w-10 rounded-full object-cover">
@@ -78,9 +80,10 @@
 
     <!-- HERO -->
     <section id="inicio" class="relative bg-ucalp-navy min-h-[85vh] flex items-center overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-ucalp-navy via-ucalp-blue to-ucalp-navy opacity-90"></div>
-        <div class="absolute top-20 right-0 w-96 h-96 bg-ucalp-sky/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 left-10 w-64 h-64 bg-ucalp-gold/5 rounded-full blur-3xl"></div>
+        <div class="absolute inset-0">
+            <img src="img/hero-students.jpg" alt="" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-ucalp-navy/95 via-ucalp-navy/80 to-ucalp-navy/60"></div>
 
         <div class="relative max-w-6xl mx-auto px-6 py-32">
             <p class="text-ucalp-gold font-medium text-sm tracking-wide mb-4">Facultad de Ciencias Exactas e Ingeniería · UCALP</p>
@@ -146,6 +149,16 @@
             <p class="text-ucalp-sky font-medium text-sm mb-3">Nuestras carreras</p>
             <h2 class="font-display text-3xl md:text-4xl text-ucalp-navy mb-12 max-w-2xl">Las disciplinas que forman a los profesionales de la FACEI</h2>
 
+            <!-- Imágenes de contexto -->
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <div class="rounded-xl overflow-hidden h-48 md:h-56">
+                    <img src="img/lab-computing.jpg" alt="Estudiantes en laboratorio de computación" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden h-48 md:h-56">
+                    <img src="img/field-engineer.jpg" alt="Ingeniero ambiental en campo" class="w-full h-full object-cover">
+                </div>
+            </div>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-white p-6 rounded-lg border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
                     <div class="w-10 h-10 bg-ucalp-sky/10 rounded flex items-center justify-center mb-4">
@@ -205,129 +218,133 @@
             <h2 class="font-display text-3xl md:text-4xl text-white mb-4 max-w-2xl">Egresados de la FACEI en el mundo</h2>
             <p class="text-white/60 mb-12 max-w-xl">Nuestros graduados se desarrollan profesionalmente en Argentina y en el exterior, en roles que van desde el desarrollo de software hasta la gestión ambiental.</p>
 
-            <div class="relative overflow-hidden">
-                <div id="carousel" class="carousel-track gap-5">
+            <div class="carousel-container flex gap-5 pb-4">
                     <!-- Card 1 - Federico Maza -->
-                    <div class="min-w-[320px] md:min-w-[380px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur rounded-xl p-6 border border-white/10 flex-shrink-0">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-ucalp-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-ucalp-gold font-display text-lg">FM</span>
+                    <div class="carousel-card min-w-[320px] md:min-w-[380px] bg-white/5 rounded-2xl overflow-hidden border border-white/10 flex-shrink-0 hover:bg-white/10 transition-colors duration-300">
+                        <div class="h-1.5 bg-gradient-to-r from-ucalp-gold to-ucalp-sky"></div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-ucalp-gold/30 to-ucalp-sky/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <span class="text-ucalp-gold font-display text-xl font-bold">FM</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold text-lg">Federico Maza</h3>
+                                    <p class="text-white/50 text-sm">Lic. en Sistemas</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="text-white font-semibold">Federico Maza</h3>
-                                <p class="text-white/50 text-sm">Lic. en Sistemas</p>
+                            <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                Barcelona, España
+                            </p>
+                            <p class="text-white/70 text-sm leading-relaxed mb-4">Desarrollador Senior. Comenzó en Holanda en e-commerce y hoy se desempeña en el sector tecnológico en Barcelona.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-ucalp-gold/15 text-ucalp-gold px-3 py-1 rounded-full font-medium">Tecnología</span>
+                                <span class="text-xs bg-white/10 text-white/60 px-3 py-1 rounded-full">Desarrollo de Software</span>
                             </div>
-                        </div>
-                        <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-                            Barcelona, España
-                        </p>
-                        <p class="text-white/70 text-sm leading-relaxed mb-4">Desarrollador Senior. Comenzó en Holanda en e-commerce y hoy se desempeña en el sector tecnológico en Barcelona.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-ucalp-sky/20 text-ucalp-sky/90 px-2.5 py-1 rounded-full">Tecnología</span>
-                            <span class="text-xs bg-white/10 text-white/60 px-2.5 py-1 rounded-full">Desarrollo de Software</span>
                         </div>
                     </div>
 
                     <!-- Card 2 - Darío Alba -->
-                    <div class="min-w-[320px] md:min-w-[380px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur rounded-xl p-6 border border-white/10 flex-shrink-0">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-ucalp-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-ucalp-gold font-display text-lg">DA</span>
+                    <div class="carousel-card min-w-[320px] md:min-w-[380px] bg-white/5 rounded-2xl overflow-hidden border border-white/10 flex-shrink-0 hover:bg-white/10 transition-colors duration-300">
+                        <div class="h-1.5 bg-gradient-to-r from-ucalp-sky to-green-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-ucalp-sky/30 to-green-400/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <span class="text-ucalp-sky font-display text-xl font-bold">DA</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold text-lg">Darío Alba</h3>
+                                    <p class="text-white/50 text-sm">Ing. Ambiental · 2022</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="text-white font-semibold">Darío Alba</h3>
-                                <p class="text-white/50 text-sm">Ing. Ambiental · 2022</p>
+                            <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                Manitoba, Canadá
+                            </p>
+                            <p class="text-white/70 text-sm leading-relaxed mb-4">Admin. de Operaciones en una ONG del río Souris dedicada a la preservación de cuencas hidrográficas. Usa drones y GIS a diario.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-green-400/15 text-green-400 px-3 py-1 rounded-full font-medium">Medio Ambiente</span>
+                                <span class="text-xs bg-white/10 text-white/60 px-3 py-1 rounded-full">GIS · Drones</span>
                             </div>
-                        </div>
-                        <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-                            Manitoba, Canadá
-                        </p>
-                        <p class="text-white/70 text-sm leading-relaxed mb-4">Admin. de Operaciones en una ONG del río Souris dedicada a la preservación de cuencas hidrográficas. Usa drones y GIS a diario.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-ucalp-sky/20 text-ucalp-sky/90 px-2.5 py-1 rounded-full">Medio Ambiente</span>
-                            <span class="text-xs bg-white/10 text-white/60 px-2.5 py-1 rounded-full">GIS · Drones</span>
                         </div>
                     </div>
 
                     <!-- Card 3 - Egresado Sistemas -->
-                    <div class="min-w-[320px] md:min-w-[380px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur rounded-xl p-6 border border-white/10 flex-shrink-0">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-ucalp-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-ucalp-gold font-display text-lg">AS</span>
+                    <div class="carousel-card min-w-[320px] md:min-w-[380px] bg-white/5 rounded-2xl overflow-hidden border border-white/10 flex-shrink-0 hover:bg-white/10 transition-colors duration-300">
+                        <div class="h-1.5 bg-gradient-to-r from-purple-400 to-ucalp-sky"></div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-purple-400/30 to-ucalp-sky/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <span class="text-purple-300 font-display text-xl font-bold">AS</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold text-lg">Egresado de Análisis de Sistemas</h3>
+                                    <p class="text-white/50 text-sm">Analista de Sistemas · 2015</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="text-white font-semibold">Egresado de Análisis de Sistemas</h3>
-                                <p class="text-white/50 text-sm">Analista de Sistemas · 2015</p>
+                            <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                Exterior
+                            </p>
+                            <p class="text-white/70 text-sm leading-relaxed mb-4">Líder de equipos de desarrollo y QA en entornos Agile. Creció desde desarrollador junior hasta liderazgo en empresas internacionales.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-purple-400/15 text-purple-300 px-3 py-1 rounded-full font-medium">Liderazgo IT</span>
+                                <span class="text-xs bg-white/10 text-white/60 px-3 py-1 rounded-full">Agile · QA</span>
                             </div>
-                        </div>
-                        <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-                            Exterior
-                        </p>
-                        <p class="text-white/70 text-sm leading-relaxed mb-4">Líder de equipos de desarrollo y QA en entornos Agile. Creció desde desarrollador junior hasta liderazgo en empresas internacionales.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-ucalp-sky/20 text-ucalp-sky/90 px-2.5 py-1 rounded-full">Liderazgo IT</span>
-                            <span class="text-xs bg-white/10 text-white/60 px-2.5 py-1 rounded-full">Agile · QA</span>
                         </div>
                     </div>
 
                     <!-- Card 4 - Egresado HyS -->
-                    <div class="min-w-[320px] md:min-w-[380px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur rounded-xl p-6 border border-white/10 flex-shrink-0">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-ucalp-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-ucalp-gold font-display text-lg">SS</span>
+                    <div class="carousel-card min-w-[320px] md:min-w-[380px] bg-white/5 rounded-2xl overflow-hidden border border-white/10 flex-shrink-0 hover:bg-white/10 transition-colors duration-300">
+                        <div class="h-1.5 bg-gradient-to-r from-orange-400 to-ucalp-gold"></div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-orange-400/30 to-ucalp-gold/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <span class="text-orange-300 font-display text-xl font-bold">SS</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold text-lg">Egresado de Seg., Salud y Ambiente</h3>
+                                    <p class="text-white/50 text-sm">Lic. en Seg. e Higiene · 2019</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="text-white font-semibold">Egresado de Seg., Salud y Ambiente</h3>
-                                <p class="text-white/50 text-sm">Lic. en Seg. e Higiene · 2019</p>
+                            <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                Sydney, Australia
+                            </p>
+                            <p class="text-white/70 text-sm leading-relaxed mb-4">Aplica conocimientos de ergonomía e higiene ocupacional en el sector privado australiano. Valora la base sólida recibida en la FACEI.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-orange-400/15 text-orange-300 px-3 py-1 rounded-full font-medium">Seguridad Laboral</span>
+                                <span class="text-xs bg-white/10 text-white/60 px-3 py-1 rounded-full">Ergonomía</span>
                             </div>
-                        </div>
-                        <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-                            Sydney, Australia
-                        </p>
-                        <p class="text-white/70 text-sm leading-relaxed mb-4">Aplica conocimientos de ergonomía e higiene ocupacional en el sector privado australiano. Valora la base sólida recibida en la FACEI.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-ucalp-sky/20 text-ucalp-sky/90 px-2.5 py-1 rounded-full">Seguridad Laboral</span>
-                            <span class="text-xs bg-white/10 text-white/60 px-2.5 py-1 rounded-full">Ergonomía</span>
                         </div>
                     </div>
 
                     <!-- Card 5 - Egresado Sistemas Madrid -->
-                    <div class="min-w-[320px] md:min-w-[380px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur rounded-xl p-6 border border-white/10 flex-shrink-0">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-ucalp-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-ucalp-gold font-display text-lg">LS</span>
+                    <div class="carousel-card min-w-[320px] md:min-w-[380px] bg-white/5 rounded-2xl overflow-hidden border border-white/10 flex-shrink-0 hover:bg-white/10 transition-colors duration-300">
+                        <div class="h-1.5 bg-gradient-to-r from-ucalp-gold to-purple-400"></div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-ucalp-gold/30 to-purple-400/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <span class="text-ucalp-gold font-display text-xl font-bold">LS</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold text-lg">Egresado de Lic. en Sistemas</h3>
+                                    <p class="text-white/50 text-sm">Lic. en Sistemas · 2020</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="text-white font-semibold">Egresado de Lic. en Sistemas</h3>
-                                <p class="text-white/50 text-sm">Lic. en Sistemas · 2020</p>
+                            <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                Madrid, España
+                            </p>
+                            <p class="text-white/70 text-sm leading-relaxed mb-4">Profesional IT en el sector tecnológico madrileño. Muy satisfecho con su desarrollo profesional post-graduación en la FACEI.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-ucalp-gold/15 text-ucalp-gold px-3 py-1 rounded-full font-medium">Tecnología</span>
+                                <span class="text-xs bg-white/10 text-white/60 px-3 py-1 rounded-full">IT</span>
                             </div>
-                        </div>
-                        <p class="text-ucalp-gold text-sm font-medium mb-3 flex items-center gap-1.5">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-                            Madrid, España
-                        </p>
-                        <p class="text-white/70 text-sm leading-relaxed mb-4">Profesional IT en el sector tecnológico madrileño. Muy satisfecho con su desarrollo profesional post-graduación en la FACEI.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs bg-ucalp-sky/20 text-ucalp-sky/90 px-2.5 py-1 rounded-full">Tecnología</span>
-                            <span class="text-xs bg-white/10 text-white/60 px-2.5 py-1 rounded-full">IT</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Carousel controls -->
-                <div class="flex gap-3 mt-8">
-                    <button id="prev-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                    </button>
-                    <button id="next-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                    </button>
-                </div>
             </div>
+            <p class="text-white/40 text-sm mt-4 md:hidden">Deslizá para ver más →</p>
         </div>
     </section>
 
@@ -423,6 +440,11 @@
     <!-- ACTIVIDADES Y COMUNIDAD -->
     <section class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-6">
+            <!-- Imagen de networking -->
+            <div class="rounded-xl overflow-hidden h-56 md:h-72 mb-12">
+                <img src="img/networking-event.jpg" alt="Profesionales en evento de networking" class="w-full h-full object-cover">
+            </div>
+
             <div class="md:flex md:items-start md:gap-16">
                 <div class="md:w-1/2 mb-10 md:mb-0">
                     <p class="text-ucalp-sky font-medium text-sm mb-3">Actividades y comunidad</p>
@@ -509,11 +531,14 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-ucalp-navy border-t border-white/10 py-8">
+    <footer class="bg-ucalp-navy border-t border-white/10 py-10">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-center md:text-left">
-                <p class="text-white/40 text-sm">Centro de Graduados — Facultad de Ciencias Exactas e Ingeniería</p>
-                <p class="text-white/30 text-xs mt-1">Universidad Católica de La Plata · 2026</p>
+            <div class="flex items-center gap-4 text-center md:text-left">
+                <img src="img/logo-ucalp.jpg" alt="Universidad Católica de La Plata" class="h-12 w-12 rounded-lg object-cover opacity-80">
+                <div>
+                    <p class="text-white/40 text-sm">Centro de Graduados — Facultad de Ciencias Exactas e Ingeniería</p>
+                    <p class="text-white/30 text-xs mt-1">Universidad Católica de La Plata · 2026</p>
+                </div>
             </div>
             <div class="flex gap-6">
                 <a href="https://www.instagram.com/graduados_ucalp/" target="_blank" class="text-white/40 hover:text-white text-sm transition-colors">Instagram Graduados</a>
