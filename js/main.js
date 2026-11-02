@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.getElementById('carousel');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
-    const cardWidth = 370;
+    const cardWidth = 400; // 380px card + 20px gap
 
     // Duplicar las cards para loop infinito
     carousel.innerHTML += carousel.innerHTML;
