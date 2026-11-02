@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateCounter(el) {
         const target = parseInt(el.dataset.target);
         const suffix = el.dataset.suffix || '';
-        const duration = 1500; // ms
+        const duration = 3000; // ms
         const start = performance.now();
 
         function update(now) {
