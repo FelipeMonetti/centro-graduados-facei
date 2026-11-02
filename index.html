@@ -21,7 +21,7 @@
     <meta name="twitter:description" content="Conectamos a nuestra comunidad de egresados con oportunidades de desarrollo profesional.">
     <meta name="twitter:image" content="https://centro-graduados-facei.netlify.app/og-image.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Montserrat:wght@600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -39,6 +39,7 @@
                     fontFamily: {
                         display: ['"Montserrat"', 'system-ui', 'sans-serif'],
                         body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+                        marca: ['"Roboto"', 'system-ui', 'sans-serif'],
                     }
                 }
             }
@@ -71,6 +72,7 @@
                 <a href="#graduados" class="text-white/70 hover:text-white text-sm font-medium transition-colors">Graduados</a>
                 <a href="#historias" class="text-white/70 hover:text-white text-sm font-medium transition-colors">Historias</a>
                 <a href="#desarrollo" class="text-white/70 hover:text-white text-sm font-medium transition-colors">Desarrollo</a>
+                <a href="#actividades" class="text-white/70 hover:text-white text-sm font-medium transition-colors">Actividades</a>
                 <a href="#contacto" class="bg-ucalp-gold text-ucalp-navy px-4 py-2 rounded text-sm font-semibold hover:bg-yellow-500 transition-colors">Contacto</a>
             </div>
 
@@ -88,6 +90,7 @@
             <a href="#graduados" class="block text-white/70 hover:text-white text-sm">Graduados</a>
             <a href="#historias" class="block text-white/70 hover:text-white text-sm">Historias</a>
             <a href="#desarrollo" class="block text-white/70 hover:text-white text-sm">Desarrollo</a>
+            <a href="#actividades" class="block text-white/70 hover:text-white text-sm">Actividades</a>
             <a href="#contacto" class="block text-ucalp-gold font-semibold text-sm">Contacto</a>
         </div>
     </nav>
@@ -100,7 +103,7 @@
         <div class="absolute inset-0 bg-gradient-to-r from-ucalp-navy/95 via-ucalp-navy/80 to-ucalp-navy/60"></div>
 
         <div class="relative max-w-6xl mx-auto px-6 py-32">
-            <p class="text-ucalp-gold font-medium text-sm tracking-wide mb-4">Facultad de Ciencias Exactas e Ingeniería · UCALP</p>
+            <p class="text-ucalp-gold font-medium text-sm tracking-wide mb-4 font-marca">Facultad de Ciencias Exactas e Ingeniería · UCALP</p>
             <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-white leading-tight max-w-4xl mb-6">
                 Centro de Graduados
             </h1>
@@ -361,7 +364,7 @@
     </section>
 
     <!-- ACTIVIDADES Y COMUNIDAD -->
-    <section class="py-24 bg-white">
+    <section id="actividades" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-6">
             <!-- Imagen de networking -->
             <div class="rounded-xl overflow-hidden h-72 md:h-96 mb-12">
@@ -432,7 +435,7 @@
                         <div class="space-y-4">
                             <div>
                                 <p class="text-white/50 text-sm">Facultad</p>
-                                <p class="text-white">Facultad de Ciencias Exactas e Ingeniería — UCALP</p>
+                                <p class="text-white font-marca">Facultad de Ciencias Exactas e Ingeniería — UCALP</p>
                             </div>
                             <div>
                                 <p class="text-white/50 text-sm">Dirección</p>
@@ -459,12 +462,12 @@
             <div class="flex items-center gap-4 text-center md:text-left">
                 <img src="img/logo-ucalp-circular.png" alt="Universidad Católica de La Plata" class="h-20 w-20">
                 <div>
-                    <p class="text-white/40 text-sm">Centro de Graduados — Facultad de Ciencias Exactas e Ingeniería</p>
+                    <p class="text-white/40 text-sm font-marca">Centro de Graduados — Facultad de Ciencias Exactas e Ingeniería</p>
                     <p class="text-white/30 text-xs mt-1">Universidad Católica de La Plata · 2026</p>
                 </div>
             </div>
             <div class="flex gap-6">
-                <a href="https://www.instagram.com/graduados_ucalp/" target="_blank" class="text-white/40 hover:text-white text-sm transition-colors">Instagram Graduados</a>
+                <a href="https://www.instagram.com/graduadosucalp/" target="_blank" class="text-white/40 hover:text-white text-sm transition-colors">Instagram Graduados</a>
                 <a href="https://www.facebook.com/exactas.ingenieria.ucalp" target="_blank" class="text-white/40 hover:text-white text-sm transition-colors">Facebook FACEI</a>
                 <a href="https://www.instagram.com/exactas.ingenieria.ucalp" target="_blank" class="text-white/40 hover:text-white text-sm transition-colors">Instagram FACEI</a>
                 <a href="https://www.linkedin.com/school/ucalp/" target="_blank" class="text-white/40 hover:text-white text-sm transition-colors">LinkedIn</a>
